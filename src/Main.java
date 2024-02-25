@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class Main {
@@ -27,5 +29,13 @@ public class Main {
       return "%s %s".formatted(firstNames[element], reversedString.reverse());
     });
     Arrays.asList(firstNames).forEach(element -> System.out.println(element));
+
+//  Remove lastname if it's same as the firstname while reversed
+    List<String> names = new ArrayList<>(List.of(firstNames));
+    names.removeIf((name) -> {
+      String[] nameString = name.split(" ");
+      return nameString[0].compareTo(nameString[2]) == 0;
+    });
+    System.out.println(names);
   }
 }
